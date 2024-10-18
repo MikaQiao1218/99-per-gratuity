@@ -18,52 +18,53 @@
         .container {
             text-align: center;
             background-color: #fff;
-            padding: 20px;
+            padding: 60px; /* Increased padding for larger appearance */
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            max-width: 720px; /* Adjusted width for 12:9 ratio */
             width: 100%;
+            height: 540px; /* Height adjusted to maintain 12:9 ratio */
             box-sizing: border-box;
             position: relative;
         }
         .restaurant-image {
             width: 100%;
             height: auto;
-            margin-bottom: 20px;
-            cursor: pointer; /* Cursor change for clickable image */
+            margin-bottom: 30px;
+            cursor: pointer;
         }
         .tip-button, .custom-tip-button, .no-tip-button {
-            margin: 10px;
-            padding: 15px 20px;
-            font-size: 18px;
+            margin: 15px;
+            padding: 25px 40px; /* Increased padding for larger buttons */
+            font-size: 28px; /* Increased font size for larger buttons */
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             background-color: #007bff;
             color: white;
             cursor: pointer;
             transition: background-color 0.3s;
-            width: calc(30% - 20px);
+            width: calc(30% - 30px);
         }
         .tip-button:hover, .custom-tip-button:hover, .no-tip-button:hover {
             background-color: #0056b3;
         }
         .message {
-            margin-top: 20px;
-            font-size: 18px;
+            margin-top: 30px;
+            font-size: 24px;
             color: green;
         }
         .button-group {
             display: flex;
-            justify-content: space-between; /* Space between buttons */
-            margin-top: 10px;
+            justify-content: space-between;
+            margin-top: 15px;
         }
         .percentage-buttons {
-            display: flex; /* Align percentage buttons in a row */
-            justify-content: space-between; /* Space between percentage buttons */
-            margin-bottom: 10px; /* Space below percentage buttons */
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
         }
         .full-width-button {
-            width: calc(48%); /* Adjusted width for No TIP and Custom buttons */
+            width: calc(48%);
         }
         .large-button-container {
             display: flex;
@@ -72,12 +73,12 @@
             height: 100vh;
         }
         .large-button {
-            padding: 50px 70px;
-            font-size: 72px;
+            padding: 80px 100px; /* Increased padding for the large button */
+            font-size: 80px; /* Font size remains the same */
             background-color: #007bff;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s;
         }
@@ -87,10 +88,16 @@
         .clickable-text {
             cursor: pointer;
             color: #007bff;
-            text-decoration: underline; /* Underline to indicate clickable text */
+            text-decoration: underline;
+            font-size: 28px;
         }
         .clickable-text:hover {
             color: #0056b3;
+        }
+        .full-image {
+            width: 100%; /* Set a larger width for the No Tip image */
+            height: auto;
+            margin-bottom: 20px; /* Added margin below the image */
         }
     </style>
 </head>
@@ -100,9 +107,9 @@
         
         <h2>Please leave a tip</h2>
         <div class="percentage-buttons">
-            <button class="tip-button" onclick="showOkMessage('15%')">15%</button>
-            <button class="tip-button" onclick="showOkMessage('18%')">18%</button>
-            <button class="tip-button" onclick="showOkMessage('25%')">25%</button>
+            <button class="tip-button" onclick="handleTipSelection()">15%</button>
+            <button class="tip-button" onclick="handleTipSelection()">18%</button>
+            <button class="tip-button" onclick="handleTipSelection()">25%</button>
         </div>
         <div class="button-group">
             <button class="no-tip-button full-width-button" onclick="showBadTip()">NO TIP</button>
@@ -113,7 +120,7 @@
 
     <script>
         let currentImageIndex = 0; // Index for the images
-        const images = ['Picture3.png', 'Picture4.png', 'Picture5.png', 'Picture6.png']; // Updated image array
+        const images = ['Picture3.png', 'Picture4.png', 'Picture5.png', 'Picture6.png','Picture7.png']; // Updated image array
 
         function toggleImage() {
             const imageElement = document.querySelector('.restaurant-image');
@@ -125,8 +132,9 @@
             }
         }
 
-        function showOkMessage(tip) {
-            document.getElementById('result').innerText = `OK, you chose a ${tip} tip.`;
+
+        function handleTipSelection() {
+            // Do nothing when a tip button is clicked
         }
 
         function showCustomTipPage() {
@@ -148,8 +156,8 @@
 
         function showBadTip() {
             document.body.innerHTML = `
-                <div style="text-align: center; padding: 20px;">
-                    <img src="Picture2.png" alt="Bad Tip" style="max-width: 100%; height: auto;" onclick="returnToMain()">
+                <div style="text-align: center; padding: 120px;">
+                    <img src="Picture2.png" alt="Bad Tip" class="full-image" onclick="returnToMain()">
                     <h1 class="clickable-text" onclick="returnToMain()">BAD TIP</h1>
                 </div>
             `;
@@ -162,9 +170,9 @@
                     
                     <h2>Please leave a tip</h2>
                     <div class="percentage-buttons">
-                        <button class="tip-button" onclick="showOkMessage('15%')">15%</button>
-                        <button class="tip-button" onclick="showOkMessage('18%')">18%</button>
-                        <button class="tip-button" onclick="showOkMessage('25%')">25%</button>
+                        <button class="tip-button" onclick="handleTipSelection()">15%</button>
+                        <button class="tip-button" onclick="handleTipSelection()">18%</button>
+                        <button class="tip-button" onclick="handleTipSelection()">25%</button>
                     </div>
                     <div class="button-group">
                         <button class="no-tip-button full-width-button" onclick="showBadTip()">NO TIP</button>
